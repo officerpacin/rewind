@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { Refresh1Line } from "@mingcute/react";
 import { useTranslation, getTranslationsForAllLocales } from "@/languages";
-import { AboutTabLinks } from "./AboutTabLinks";
 import { AboutBackdrop } from "./AboutBackdrop";
 import { useAboutAppVersion } from "./useAboutAppVersion";
 
@@ -82,9 +81,6 @@ export function AboutTab({ searchQuery }: { searchQuery?: string }) {
             ? t("settings.about.checking_updates")
             : t("settings.about.check_updates")}
         </button>
-        <div className="mt-[18px]">
-          <AboutTabLinks />
-        </div>
       </div>
     </div>
   );

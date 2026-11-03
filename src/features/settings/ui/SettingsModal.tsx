@@ -8,13 +8,12 @@ import {
   DiscordFill,
   KeyboardLine,
   YoutubeFill,
+  User1Line,
 } from "@mingcute/react";
 import {
   Play,
   Palette,
   InfoCircle,
-  Book2,
-  QuestionCircle,
   Database,
   Widget5,
 } from "@solar-icons/react";
@@ -34,6 +33,7 @@ import {
   OverlayTab,
   DiscordTab,
   YoutubeTab,
+  AccountTab,
 } from "./tabs";
 
 type TabId =
@@ -44,6 +44,7 @@ type TabId =
   | "Youtube"
   | "Appearance"
   | "Storage"
+  | "Account"
   | "About";
 
 const navGroupClass =
@@ -57,6 +58,7 @@ const TAB_ICONS: Record<TabId, React.ComponentType<any>> = {
   Youtube: YoutubeFill,
   Appearance: Palette,
   Storage: Database,
+  Account: User1Line,
   About: InfoCircle,
 };
 
@@ -66,7 +68,7 @@ const TAB_GROUPS: { labelKey: TabGroupKey; ids: TabId[] }[] = [
   { labelKey: "player", ids: ["Playback", "Shortcuts"] },
   { labelKey: "interface", ids: ["Appearance", "Overlay"] },
   { labelKey: "integrations", ids: ["Youtube", "Discord"] },
-  { labelKey: "application", ids: ["Storage", "About"] },
+  { labelKey: "application", ids: ["Account", "Storage", "About"] },
 ];
 
 const SETTING_ITEMS: { tabId: TabId; titleKey: string; descKey?: string }[] = [
@@ -248,6 +250,20 @@ const SETTING_ITEMS: { tabId: TabId; titleKey: string; descKey?: string }[] = [
     descKey: "settings.storage.open_folder_description",
   },
 
+  // Account
+  {
+    tabId: "Account",
+    titleKey: "settings.profile.username_label",
+  },
+  {
+    tabId: "Account",
+    titleKey: "settings.profile.display_name_label",
+  },
+  {
+    tabId: "Account",
+    titleKey: "settings.account.choose_picture",
+  },
+
   // About
   {
     tabId: "About",
@@ -287,6 +303,7 @@ export default function SettingsModal() {
     Youtube: t("settings.tabs.youtube") || "YouTube",
     Appearance: t("settings.tabs.appearance"),
     Storage: t("settings.tabs.storage"),
+    Account: t("settings.tabs.account"),
     About: t("settings.tabs.about"),
   };
 
@@ -306,6 +323,7 @@ export default function SettingsModal() {
       "Sign in to your YouTube account to prevent playback errors.",
     Appearance: t("settings.theme.description"),
     Storage: t("settings.storage.description"),
+    Account: t("settings.account.description"),
     About: t("settings.about.tagline"),
   };
 
@@ -322,6 +340,7 @@ export default function SettingsModal() {
       Youtube: "settings.tabs.youtube",
       Appearance: "settings.theme.title",
       Storage: "settings.tabs.storage",
+      Account: "settings.tabs.account",
       About: "settings.tabs.about",
     };
 
@@ -333,6 +352,7 @@ export default function SettingsModal() {
       Youtube: "settings.youtube.description",
       Appearance: "settings.theme.description",
       Storage: "settings.storage.description",
+      Account: "settings.account.description",
       About: "settings.about.tagline",
     };
 
@@ -383,10 +403,6 @@ export default function SettingsModal() {
       }
     }
   }, [searchQuery, matchingTabIds, activeTab]);
-
-  const openExternal = (url: string) => {
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
 
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
@@ -506,47 +522,6 @@ export default function SettingsModal() {
               </div>
             ))
           )}
-
-          <div className="flex flex-col">
-            <p
-              className="text-text-tertiary text-[11px] font-[500] m-0 px-[10px] pb-[4px] pt-[2px]"
-              style={font}
-            >
-              {t("settings.groups.help")}
-            </p>
-            <div className={navGroupClass}>
-              <button
-                type="button"
-                onClick={() =>
-                  openExternal(
-                    "https://github.com/tryliner/desktop/blob/main/README.md",
-                  )
-                }
-                className="w-full flex items-center gap-[10px] px-[10px] py-[7px] rounded-[10px] border-0 bg-transparent text-text-secondary hover:bg-black/[0.04] dark:hover:bg-white/[0.05] hover:text-text-primary cursor-pointer text-left transition-colors"
-                style={{ ...font, fontSize: "13px" }}
-              >
-                <Book2
-                  size={18}
-                  weight="Bold"
-                  className="text-text-tertiary shrink-0"
-                />
-                <span className="leading-none">{t("settings.docs")}</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => openExternal("https://t.me/liner_app?direct")}
-                className="w-full flex items-center gap-[10px] px-[10px] py-[7px] rounded-[10px] border-0 bg-transparent text-text-secondary hover:bg-black/[0.04] dark:hover:bg-white/[0.05] hover:text-text-primary cursor-pointer text-left transition-colors"
-                style={{ ...font, fontSize: "13px" }}
-              >
-                <QuestionCircle
-                  size={18}
-                  weight="Bold"
-                  className="text-text-tertiary shrink-0"
-                />
-                <span className="leading-none">{t("settings.support")}</span>
-              </button>
-            </div>
-          </div>
         </nav>
 
         <div className="shrink-0 p-[12px] pt-[8px]">
@@ -642,6 +617,7 @@ export default function SettingsModal() {
               {activeTab === "Storage" && (
                 <StorageTab searchQuery={searchQuery} />
               )}
+              {activeTab === "Account" && <AccountTab />}
               {activeTab === "About" && <AboutTab searchQuery={searchQuery} />}
             </motion.div>
           </div>

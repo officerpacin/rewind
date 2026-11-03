@@ -2,6 +2,7 @@ import { neon } from "@neondatabase/serverless";
 import { compare, hash } from "bcryptjs";
 import { SignJWT, jwtVerify } from "jose";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
+import { validateAvatarUrl } from "./avatar";
 
 type UserRow = {
   id: string;
@@ -557,6 +558,17 @@ async function route(request: Request): Promise<Response> {
         : input[key] === null
           ? null
           : text(input[key], key, max);
+    const avatarUrlResult =
+      input.avatarUrl === undefined
+        ? { ok: true as const, value: current.avatar_url }
+        : validateAvatarUrl(input.avatarUrl);
+    if (!avatarUrlResult.ok) {
+      fail(
+        400,
+        "INVALID_INPUT",
+        "avatarUrl must be an HTTP(S) URL or a supported compressed WebP image.",
+      );
+    }
     const bool = (key: string, old: boolean) => {
       if (input[key] === undefined) return old;
       if (typeof input[key] !== "boolean")
@@ -572,7 +584,7 @@ async function route(request: Request): Promise<Response> {
         userId,
         username,
         nullableText("displayName", current.display_name, 80),
-        nullableText("avatarUrl", current.avatar_url, 2048),
+        avatarUrlResult.value,
         nullableText("bio", current.bio, 500),
         bool("isPublic", current.is_public),
         bool("showActivity", current.show_activity),

@@ -147,6 +147,9 @@ describe("LoginPage Multi-Step Registration Flow", () => {
     expect(container.querySelector("#auth-password")).not.toBeNull();
     expect(container.querySelector("#auth-confirm")).toBeNull();
     expect(container.querySelector("#auth-username")).toBeNull();
+    expect(
+      container.querySelectorAll('a[href*="terms"], a[href*="privacy"]'),
+    ).toHaveLength(0);
 
     const buttons = Array.from(container.querySelectorAll("button"));
     const createAccBtn = buttons.find((b) =>

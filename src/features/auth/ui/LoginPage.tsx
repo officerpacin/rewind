@@ -406,7 +406,9 @@ export default function LoginPage() {
                           </span>
                         }
                         hasError={Boolean(error) && errorField === "username"}
-                        aria-invalid={Boolean(error) && errorField === "username"}
+                        aria-invalid={
+                          Boolean(error) && errorField === "username"
+                        }
                         aria-describedby={
                           error && errorField === "username"
                             ? "auth-form-error"
@@ -453,9 +455,17 @@ export default function LoginPage() {
                             autoComplete="given-name"
                             placeholder={t("login.placeholder_first_name")}
                             value={firstName}
-                            hasError={Boolean(error) && errorField === "firstName"}
-                            aria-invalid={Boolean(error) && errorField === "firstName"}
-                            aria-describedby={error && errorField === "firstName" ? "auth-form-error" : undefined}
+                            hasError={
+                              Boolean(error) && errorField === "firstName"
+                            }
+                            aria-invalid={
+                              Boolean(error) && errorField === "firstName"
+                            }
+                            aria-describedby={
+                              error && errorField === "firstName"
+                                ? "auth-form-error"
+                                : undefined
+                            }
                             onChange={(event) => {
                               setFirstName(event.target.value);
                               if (error) setError("");
@@ -476,9 +486,17 @@ export default function LoginPage() {
                             autoComplete="family-name"
                             placeholder={t("login.placeholder_last_name")}
                             value={lastName}
-                            hasError={Boolean(error) && errorField === "lastName"}
-                            aria-invalid={Boolean(error) && errorField === "lastName"}
-                            aria-describedby={error && errorField === "lastName" ? "auth-form-error" : undefined}
+                            hasError={
+                              Boolean(error) && errorField === "lastName"
+                            }
+                            aria-invalid={
+                              Boolean(error) && errorField === "lastName"
+                            }
+                            aria-describedby={
+                              error && errorField === "lastName"
+                                ? "auth-form-error"
+                                : undefined
+                            }
                             onChange={(event) => {
                               setLastName(event.target.value);
                               if (error) setError("");
@@ -607,29 +625,6 @@ export default function LoginPage() {
               </form>
             </div>
           </div>
-
-          {/* Bottom: legal warning */}
-          <p className="m-0 shrink-0 text-center text-[11px] leading-[1.5] text-text-tertiary">
-            {t("login.legal")}{" "}
-            <a
-              href="https://tryliner.fun/terms"
-              target="_blank"
-              rel="noreferrer"
-              className="text-text-secondary underline underline-offset-2 hover:text-text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-text-primary rounded-xs transition-colors"
-            >
-              {t("login.legal_tos")}
-            </a>{" "}
-            {t("login.legal_and")}{" "}
-            <a
-              href="https://tryliner.fun/privacy"
-              target="_blank"
-              rel="noreferrer"
-              className="text-text-secondary underline underline-offset-2 hover:text-text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-text-primary rounded-xs transition-colors"
-            >
-              {t("login.legal_pp")}
-            </a>
-            .
-          </p>
         </div>
       </section>
     </main>

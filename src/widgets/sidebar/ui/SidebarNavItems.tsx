@@ -44,7 +44,7 @@ export function SidebarNavItems({
         .filter(
           (item) =>
             item.id !== "settings" &&
-            !(MUSIC_ONLY_MODE && item.id === "library"),
+            !(MUSIC_ONLY_MODE && ["library", "stats"].includes(item.id)),
         )
         .map((item) => {
           const active = isItemActive(item.id, item.href);

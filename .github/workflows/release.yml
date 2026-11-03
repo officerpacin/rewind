@@ -20,7 +20,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 12.15.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,8 +34,7 @@ jobs:
       - name: Build Linux packages (AppImage & deb)
         run: pnpm run electron:build:linux
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VITE_API_URL: https://api.tryliner.fun
+          VITE_API_URL: https://rewind-d0on.onrender.com
           VITE_COVERS_PROXY_URL: https://covers.tryliner.fun
 
       - name: Upload Linux Artifacts
@@ -57,7 +56,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 12.15.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -71,8 +70,7 @@ jobs:
       - name: Build Windows installer (NSIS)
         run: pnpm run electron:build:win
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VITE_API_URL: https://api.tryliner.fun
+          VITE_API_URL: https://rewind-d0on.onrender.com
           VITE_COVERS_PROXY_URL: https://covers.tryliner.fun
 
       # the drag-to-top snap preview (windows 11) is a native add-on built by
@@ -104,7 +102,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 12.15.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -118,9 +116,8 @@ jobs:
       - name: Build macOS packages (DMG & ZIP)
         run: pnpm run electron:build:mac
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
-          VITE_API_URL: https://api.tryliner.fun
+          VITE_API_URL: https://rewind-d0on.onrender.com
           VITE_COVERS_PROXY_URL: https://covers.tryliner.fun
 
       - name: Upload macOS Artifacts

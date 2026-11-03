@@ -51,6 +51,7 @@
       "home": "Home",
       "search": "Search",
       "library": "Library",
+      "stats": "Stats",
       "settings": "Settings"
     },
     "minimize": "Minimize",
@@ -551,6 +552,24 @@
     "no_results": "No results found",
     "type_to_search": "Type to search"
   },
+  "stats": {
+    "eyebrow": "REWIND",
+    "title": "Your weekly stats",
+    "subtitle": "A little look at what you’ve been listening to.",
+    "sign_in_required": "Listening stats are available when you’re signed in to your Rewind account.",
+    "try_again": "Try again",
+    "time_listened": "Time listened",
+    "plays": "Plays",
+    "different_tracks": "Different tracks",
+    "empty_title": "Your week is just getting started",
+    "empty_description": "Play some music and your listening stats will show up here.",
+    "weekly_chart_title": "Your listening week",
+    "weekly_chart_description": "Plays each day over the last seven days",
+    "top_tracks": "Top tracks",
+    "no_track_details": "No track details available for this week.",
+    "top_artists": "Top artists",
+    "no_artist_details": "No artist details available for this week."
+  },
   "settings": {
     "title": "Settings",
     "search_placeholder": "Search settings...",
@@ -957,6 +976,21 @@
       },
       "badge_public": "Public",
       "badge_private": "Private"
+    },
+    "account": {
+      "description": "Manage your Rewind profile and account details.",
+      "email_label": "Email address",
+      "choose_picture": "Choose picture",
+      "processing_picture": "Processing image...",
+      "remove_picture": "Remove picture",
+      "picture_hint": "JPEG, PNG, or WebP. Images are resized before being saved to your Rewind account.",
+      "invalid_image": "Choose a JPEG, PNG, or WebP image.",
+      "image_too_large": "Choose an image smaller than 5 MB.",
+      "image_processing_failed": "Could not process this image.",
+      "display_name_invalid": "Display name must be between 1 and 80 characters.",
+      "sign_in_required": "Sign in to manage your account profile.",
+      "saved": "Account profile saved.",
+      "save_failed": "Could not save your account profile."
     },
     "about": {
       "liner": "Rewind",

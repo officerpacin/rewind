@@ -3,6 +3,7 @@ import {
   DEFAULT_PRIMARY_API,
   DEFAULT_CATALOG_API,
   isSecureBaseUrl,
+  resolveAccountPresenceEnabled,
   resolveAccountRecommendationsEnabled,
   resolveMusicOnlyMode,
   resolveApiBaseUrl,
@@ -20,6 +21,12 @@ describe("api base url", () => {
     expect(resolveAccountRecommendationsEnabled("true")).toBe(true);
     expect(resolveAccountRecommendationsEnabled(undefined)).toBe(false);
     expect(resolveAccountRecommendationsEnabled("false")).toBe(false);
+  });
+
+  it("enables account presence only when explicitly configured", () => {
+    expect(resolveAccountPresenceEnabled("true")).toBe(true);
+    expect(resolveAccountPresenceEnabled(undefined)).toBe(false);
+    expect(resolveAccountPresenceEnabled("false")).toBe(false);
   });
 
   it("uses the primary api when no override is set", () => {

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 
 export interface UserAvatarProps {
@@ -20,6 +20,9 @@ export function UserAvatar({
   style,
 }: UserAvatarProps) {
   const [imgError, setImgError] = useState(false);
+  useEffect(() => {
+    setImgError(false);
+  }, [user?.avatarUrl]);
 
   const initial = useMemo(() => {
     if (!user) return "";
