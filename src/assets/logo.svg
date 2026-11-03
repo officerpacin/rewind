@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="rewind-mark">
+      <path fill="white" d="M88 28C88 12.536 100.536 0 116 0H284C407 0 472 72 472 187C472 270 431 329 362 358L505 512H360L247 386H188V512H88V28Z"/>
+      <path fill="black" d="M188 140H276C319 140 343 165 343 208C343 251 319 277 276 277H188V140Z"/>
+      <path fill="white" d="M195 208L238 174C244 170 250 174 250 181V235C250 242 244 246 238 242L195 208Z"/>
+      <path fill="white" d="M246 208L289 174C295 170 301 174 301 181V235C301 242 295 246 289 242L246 208Z"/>
+    </mask>
+  </defs>
+  <path transform="translate(18 94) scale(.79 .648)" fill="white" mask="url(#rewind-mark)" d="M88 28C88 12.536 100.536 0 116 0H284C407 0 472 72 472 187C472 270 431 329 362 358L505 512H360L247 386H188V512H88V28Z"/>
+</svg>
