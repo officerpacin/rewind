@@ -5,9 +5,20 @@ export function resolveMusicOnlyMode(value: string | undefined): boolean {
   return value === "true";
 }
 
+export function resolveAccountRecommendationsEnabled(
+  value: string | undefined,
+): boolean {
+  return value === "true";
+}
+
 export const MUSIC_ONLY_MODE = resolveMusicOnlyMode(
   import.meta.env.VITE_MUSIC_ONLY_MODE as string | undefined,
 );
+
+export const ACCOUNT_RECOMMENDATIONS_ENABLED =
+  resolveAccountRecommendationsEnabled(
+    import.meta.env.VITE_ACCOUNT_RECOMMENDATIONS_ENABLED as string | undefined,
+  );
 
 const LOOPBACK_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]"]);
 

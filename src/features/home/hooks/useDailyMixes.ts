@@ -5,7 +5,10 @@ import type { Track } from "@/shared/types";
 import type { CollectionPageData } from "@/features/collection/hooks/useCollection";
 import { loadWithRetry, useSessionOwner } from "./sessionAwareLoad";
 import { freshFor, useCachedResource } from "@/shared/cache/useCachedResource";
-import { MUSIC_ONLY_MODE } from "@/shared/api/baseUrl";
+import {
+  ACCOUNT_RECOMMENDATIONS_ENABLED,
+  MUSIC_ONLY_MODE,
+} from "@/shared/api/baseUrl";
 
 export interface DailyMix {
   id: string;
@@ -123,7 +126,7 @@ export function useDailyMixes() {
   const { data, isLoading } = useCachedResource(
     MUSIC_ONLY_MODE ? "home:daily-mixes:music-only" : dailyMixesCacheKey(owner),
     () =>
-      MUSIC_ONLY_MODE
+      MUSIC_ONLY_MODE || !ACCOUNT_RECOMMENDATIONS_ENABLED
         ? Promise.resolve(EMPTY_MIXES)
         : loadWithRetry(
             () => api.getDailyMixes(),
