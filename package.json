@@ -1,6 +1,6 @@
 {
   "name": "@rewind/client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "packageManager": "pnpm@12.15.0",
   "engines": {
@@ -96,6 +96,8 @@
       "oneClick": false
     },
     "mac": {
+      "identity": "-",
+      "hardenedRuntime": false,
       "icon": "build/icon-mac.png",
       "category": "public.app-category.music",
       "target": [
