@@ -57,7 +57,7 @@ export class BundleManager {
     this.updaterUrl =
       options.updaterUrl ||
       process.env.LINER_UPDATER_URL ||
-      "https://updates.tryliner.fun";
+      "";
 
     this.publicKeyHex =
       options.publicKeyHex ||
@@ -193,6 +193,8 @@ export class BundleManager {
   }
 
   private async fetchManifest(timeoutMs: number): Promise<BundleManifest> {
+    // no OTA server configured: always run the bundle shipped in the app
+    if (!this.updaterUrl) throw new Error("OTA updater not configured");
     const res = await fetch(
       `${this.updaterUrl}/updates/manifest.json?t=${Date.now()}`,
       {
